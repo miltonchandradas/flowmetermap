@@ -62,8 +62,8 @@ resources:
 - name: aqua_destination
   type: org.cloudfoundry.managed-service
   parameters:
-    service-plan: lite
     service: destination
+    service-plan: lite
 - name: com-aqua-h2oflowmetermap-dest-srv
   type: org.cloudfoundry.managed-service
   parameters:
@@ -77,11 +77,6 @@ resources:
             ProxyType: Internet
             Type: HTTP
             URL: https://ui5.sap.com
-          # - Authentication: NoAuthentication
-          #   Name: srv-api
-          #   ProxyType: Internet
-          #   Type: HTTP
-          #   URL: https://orgsdcmuycfd1-sdcmuycfd1space-aquasanctum-srv.cfapps.eu10.hana.ondemand.com/v2/aquaservice
           existing_destinations_policy: update
       version: 1.0.0
     service: destination

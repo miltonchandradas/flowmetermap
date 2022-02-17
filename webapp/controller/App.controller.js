@@ -40,7 +40,7 @@ sap.ui.define([
                                 arrParentFlowmeterInfo = arrFlowmeterInfo;
 
                                 console.log('onAfterRendering Event');
-                                jQuery.sap.includeScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDNkXzlDoUeZNnDsPHrZa97qCa2ewfr2pU&callback=initMap");
+                                jQuery.sap.includeScript("https://maps.googleapis.com/maps/api/js?key=&callback=initMap");
                             },
                             error: function (err) {
                                 icon = icon || 'ERROR';

@@ -19,6 +19,21 @@
                     "odataVersion": "2.0"
                 }
             }
+        },
+        "crossNavigation": {
+            "context": {},
+            "inbounds": {
+                "newtile": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "flowmeter",
+                    "action": "display",
+                    "icon": "sap-icon://begin",
+                    "title": "Flowmeter Map"
+                }
+            }
         }
     },
     "sap.ui": {
