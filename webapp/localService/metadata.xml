@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="AQUASERVICE" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="H2OFlowmeterData" EntityType="AQUASERVICE.H2OFlowmeterData"/>
+                <EntitySet Name="Flowmeters" EntityType="AQUASERVICE.Flowmeters"/>
+                <EntitySet Name="ChildFlowmeters" EntityType="AQUASERVICE.ChildFlowmeters"/>
+                <EntitySet Name="ConFlowmeters" EntityType="AQUASERVICE.ConFlowmeters"/>
+                <EntitySet Name="Technicians" EntityType="AQUASERVICE.Technicians"/>
+                <EntitySet Name="ConsumerMeters" EntityType="AQUASERVICE.ConsumerMeters"/>
+                <EntitySet Name="H2OConLeakageData" EntityType="AQUASERVICE.H2OConLeakageData"/>
+                <EntitySet Name="NewCustAdditions" EntityType="AQUASERVICE.NewCustAdditions"/>
+                <EntitySet Name="PhysicalLeakage" EntityType="AQUASERVICE.PhysicalLeakage"/>
+                <EntitySet Name="Flowvalues" EntityType="AQUASERVICE.Flowvalues"/>
+                <EntitySet Name="H2OLatestLeakageData" EntityType="AQUASERVICE.H2OLatestLeakageData"/>
+                <EntitySet Name="H2OCityNewConnections" EntityType="AQUASERVICE.H2OCityNewConnections"/>
+                <EntitySet Name="H2OZoneNewConnections" EntityType="AQUASERVICE.H2OZoneNewConnections"/>
+                <EntitySet Name="H2OCityLeakages" EntityType="AQUASERVICE.H2OCityLeakages"/>
+                <EntitySet Name="H2OAdminNewConnections" EntityType="AQUASERVICE.H2OAdminNewConnections"/>
+                <EntitySet Name="H2OLatestFlowValues" EntityType="AQUASERVICE.H2OLatestFlowValues"/>
+            </EntityContainer>
+            <EntityType Name="H2OFlowmeterData">
+                <Key>
+                    <PropertyRef Name="FmID"/>
+                </Key>
+                <Property Name="FmID" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="FmDesc" Type="Edm.String" MaxLength="80"/>
+                <Property Name="FmType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmZone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmState" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLatitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLongitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SourceFmID" Type="Edm.String" MaxLength="16"/>
+                <Property Name="TechnicianID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="WaterFlowUoM" Type="Edm.String" MaxLength="12"/>
+                <Property Name="SourceFmDesc" Type="Edm.String" MaxLength="80"/>
+                <Property Name="SourceFmLatitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SourceFmLongitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Supply" Type="Edm.Double"/>
+                <Property Name="Leakage" Type="Edm.Double"/>
+                <Property Name="LeakPercentage" Type="Edm.Decimal" Scale="2" Precision="34"/>
+                <Property Name="RevenueLoss" Type="Edm.Double"/>
+                <Property Name="Timestamp" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+            <EntityType Name="Flowmeters">
+                <Key>
+                    <PropertyRef Name="FmID"/>
+                </Key>
+                <Property Name="FmID" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="FmDesc" Type="Edm.String" MaxLength="80"/>
+                <Property Name="FmType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmZone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmState" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLatitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLongitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SourceFmID" Type="Edm.String" MaxLength="16"/>
+                <Property Name="TechnicianID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CURRENCY" Type="Edm.String" MaxLength="3"/>
+                <Property Name="WATERFLOWUOM" Type="Edm.String" MaxLength="12"/>
+                <Property Name="END_BRANCH" Type="Edm.String" MaxLength="1"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CreatedTimeStamp" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+            <EntityType Name="ChildFlowmeters">
+                <Key>
+                    <PropertyRef Name="FmID"/>
+                </Key>
+                <Property Name="FmID" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="FmDesc" Type="Edm.String" MaxLength="80"/>
+                <Property Name="FmType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmZone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmState" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLatitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLongitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SourceFmID" Type="Edm.String" MaxLength="16"/>
+                <Property Name="TechnicianID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CURRENCY" Type="Edm.String" MaxLength="3"/>
+                <Property Name="WATERFLOWUOM" Type="Edm.String" MaxLength="12"/>
+                <Property Name="END_BRANCH" Type="Edm.String" MaxLength="1"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CreatedTimeStamp" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+            <EntityType Name="ConFlowmeters">
+                <Key>
+                    <PropertyRef Name="ConFmID"/>
+                </Key>
+                <Property Name="ConFmID" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="ConFmType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConFirstname" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ConLastname" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ConAddress1" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ConAddress2" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ConFmZone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConFmCity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConFmState" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConFmCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConHouseArea" Type="Edm.String" MaxLength="16"/>
+                <Property Name="ConHouseAreaUoM" Type="Edm.String" MaxLength="6"/>
+                <Property Name="ConHouseNoOfMem" Type="Edm.String" MaxLength="6"/>
+                <Property Name="AccumCons" Type="Edm.Decimal" Scale="2" Precision="10"/>
+                <Property Name="AccumConsUoM" Type="Edm.String" MaxLength="6"/>
+                <Property Name="WaterQuality" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SourceFmID" Type="Edm.String" MaxLength="16"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CreatedTimeStamp" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+            <EntityType Name="Technicians">
+                <Key>
+                    <PropertyRef Name="TechID"/>
+                </Key>
+                <Property Name="TechID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="TechFirstname" Type="Edm.String" MaxLength="80"/>
+                <Property Name="TechLastname" Type="Edm.String" MaxLength="80"/>
+                <Property Name="TechRole" Type="Edm.String" MaxLength="80"/>
+                <Property Name="TechEmail" Type="Edm.String" MaxLength="100"/>
+                <Property Name="TechMobile" Type="Edm.String" MaxLength="80"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CreatedTimestamp" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+            <EntityType Name="ConsumerMeters">
+                <Key>
+                    <PropertyRef Name="ConFmID"/>
+                </Key>
+                <Property Name="ConFmID" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="ConFmType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConFirstname" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ConLastname" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ConAddress1" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ConAddress2" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ConFmZone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConFmCity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConFmState" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConFmCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ConHouseArea" Type="Edm.String" MaxLength="16"/>
+                <Property Name="ConHouseAreaUoM" Type="Edm.String" MaxLength="6"/>
+                <Property Name="ConHouseNoOfMem" Type="Edm.String" MaxLength="6"/>
+                <Property Name="AccumCons" Type="Edm.Decimal" Scale="2" Precision="10"/>
+                <Property Name="AccumConsUoM" Type="Edm.String" MaxLength="6"/>
+                <Property Name="WaterQuality" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SourceFmID" Type="Edm.String" MaxLength="16"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CreatedTimeStamp" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+            <EntityType Name="H2OConLeakageData">
+                <Key>
+                    <PropertyRef Name="FmID"/>
+                    <PropertyRef Name="Timestamp"/>
+                </Key>
+                <Property Name="FmID" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="Timestamp" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+                <Property Name="FmDesc" Type="Edm.String" MaxLength="80"/>
+                <Property Name="FmType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmZone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmState" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLatitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLongitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SourceFmID" Type="Edm.String" MaxLength="16"/>
+                <Property Name="TechnicianID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="WaterFlowUoM" Type="Edm.String" MaxLength="12"/>
+                <Property Name="Month" Type="Edm.String" MaxLength="12"/>
+                <Property Name="Date" Type="Edm.String" MaxLength="12"/>
+                <Property Name="Supply" Type="Edm.Decimal" Scale="2" Precision="10"/>
+                <Property Name="Consumption" Type="Edm.Double"/>
+                <Property Name="Leakage" Type="Edm.Double"/>
+                <Property Name="LeakPercentage" Type="Edm.Decimal" Scale="2" Precision="34"/>
+                <Property Name="RevenueLoss" Type="Edm.Double"/>
+            </EntityType>
+            <EntityType Name="NewCustAdditions">
+                <Key>
+                    <PropertyRef Name="CustAddKey"/>
+                </Key>
+                <Property Name="CustAddKey" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="Board" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Zone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40"/>
+                <Property Name="State" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Month" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Year" Type="Edm.String" MaxLength="4"/>
+                <Property Name="NewCustomerCount" Type="Edm.Decimal" Precision="10"/>
+                <Property Name="RevIncrease" Type="Edm.Decimal" Scale="2" Precision="10"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CreatedTimestamp" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="PhysicalLeakage">
+                <Key>
+                    <PropertyRef Name="LeakageKey"/>
+                </Key>
+                <Property Name="LeakageKey" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="Board" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Zone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40"/>
+                <Property Name="State" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Month" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Year" Type="Edm.String" MaxLength="4"/>
+                <Property Name="DetectedLeaksCount" Type="Edm.Decimal" Precision="10"/>
+                <Property Name="FixedLeaksCount" Type="Edm.Decimal" Precision="10"/>
+                <Property Name="SavedWater" Type="Edm.Decimal" Scale="2" Precision="10"/>
+                <Property Name="SavedWaterUoM" Type="Edm.String" MaxLength="6"/>
+                <Property Name="NewCustomerCount" Type="Edm.Decimal" Precision="10"/>
+                <Property Name="RevIncrease" Type="Edm.Decimal" Scale="2" Precision="10"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CreatedTimestamp" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="Flowvalues">
+                <Key>
+                    <PropertyRef Name="C_TIMESTAMP"/>
+                    <PropertyRef Name="C_FLOWMETERID"/>
+                    <PropertyRef Name="C_FLOWVALUE"/>
+                </Key>
+                <Property Name="C_TIMESTAMP" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+                <Property Name="C_FLOWMETERID" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="C_FLOWVALUE" Type="Edm.Decimal" Scale="2" Precision="10" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="H2OLatestLeakageData">
+                <Key>
+                    <PropertyRef Name="FmID"/>
+                </Key>
+                <Property Name="FmID" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="Timestamp" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="FmDesc" Type="Edm.String" MaxLength="80"/>
+                <Property Name="FmType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmZone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmState" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLatitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLongitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SourceFmID" Type="Edm.String" MaxLength="16"/>
+                <Property Name="TechnicianID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="WaterFlowUoM" Type="Edm.String" MaxLength="12"/>
+                <Property Name="Supply" Type="Edm.Decimal" Scale="2" Precision="10"/>
+                <Property Name="Consumption" Type="Edm.Double"/>
+                <Property Name="Leakage" Type="Edm.Double"/>
+                <Property Name="LeakPercentage" Type="Edm.Decimal" Scale="2" Precision="34"/>
+                <Property Name="RevenueLoss" Type="Edm.Double"/>
+            </EntityType>
+            <EntityType Name="H2OCityNewConnections">
+                <Key>
+                    <PropertyRef Name="City"/>
+                </Key>
+                <Property Name="City" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="NewCustomerCount" Type="Edm.Decimal" Precision="10"/>
+                <Property Name="RevIncrease" Type="Edm.Decimal" Scale="2" Precision="10"/>
+            </EntityType>
+            <EntityType Name="H2OZoneNewConnections">
+                <Key>
+                    <PropertyRef Name="Board"/>
+                    <PropertyRef Name="Zone"/>
+                </Key>
+                <Property Name="Board" Type="Edm.String" MaxLength="80" Nullable="false"/>
+                <Property Name="Zone" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="NewCustomerCount" Type="Edm.Decimal" Precision="10"/>
+                <Property Name="RevIncrease" Type="Edm.Decimal" Scale="2" Precision="10"/>
+            </EntityType>
+            <EntityType Name="H2OCityLeakages">
+                <Key>
+                    <PropertyRef Name="City"/>
+                </Key>
+                <Property Name="City" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="SavedWaterUoM" Type="Edm.String" MaxLength="6"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="DetectedLeaksCount" Type="Edm.Decimal" Precision="10"/>
+                <Property Name="FixedLeaksCount" Type="Edm.Decimal" Precision="10"/>
+                <Property Name="SavedWater" Type="Edm.Decimal" Scale="2" Precision="10"/>
+                <Property Name="SavedRevenue" Type="Edm.Decimal" Precision="20"/>
+            </EntityType>
+            <EntityType Name="H2OAdminNewConnections">
+                <Key>
+                    <PropertyRef Name="Board"/>
+                </Key>
+                <Property Name="Board" Type="Edm.String" MaxLength="80" Nullable="false"/>
+                <Property Name="Zone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40"/>
+                <Property Name="State" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Month" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Year" Type="Edm.String" MaxLength="4"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="CustAddKey" Type="Edm.String" MaxLength="16"/>
+                <Property Name="NewCustomerCount" Type="Edm.Decimal" Precision="10"/>
+                <Property Name="RevIncrease" Type="Edm.Decimal" Scale="2" Precision="10"/>
+            </EntityType>
+            <EntityType Name="H2OLatestFlowValues">
+                <Key>
+                    <PropertyRef Name="FmID"/>
+                </Key>
+                <Property Name="FmID" Type="Edm.String" MaxLength="16" Nullable="false"/>
+                <Property Name="FmDesc" Type="Edm.String" MaxLength="80"/>
+                <Property Name="FmType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmZone" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmState" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLatitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FmLongitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SourceFmID" Type="Edm.String" MaxLength="16"/>
+                <Property Name="TechnicianID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="WaterFlowUoM" Type="Edm.String" MaxLength="12"/>
+                <Property Name="SourceFmDesc" Type="Edm.String" MaxLength="80"/>
+                <Property Name="SourceFmLatitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SourceFmLongitude" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Supply" Type="Edm.Double"/>
+                <Property Name="Leakage" Type="Edm.Double"/>
+                <Property Name="LeakPercentage" Type="Edm.Decimal" Scale="2" Precision="34"/>
+                <Property Name="RevenueLoss" Type="Edm.Double"/>
+                <Property Name="Timestamp" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+            <Annotations Target="AQUASERVICE.H2OFlowmeterData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.EntityContainer/H2OFlowmeterData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/FmID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FmID"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/Timestamp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="TIMESTAMP"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/FmDesc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMDESC"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/FmType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMTYPE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/FmZone" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMZONE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/FmCity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMCITY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/FmState" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMSTATE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/FmCountry" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMCOUNTRY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/FmLatitude" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMLATITUDE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/FmLongitude" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMLONGITUDE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/SourceFmID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SOURCEFMID"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/TechnicianID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="TECHNICIANID"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CURRENCY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/WaterFlowUoM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="WATERFLOWUOM"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/Month" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="MONTH"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/Date" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="DATE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/Supply" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SUPPLY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/Consumption" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CONSUMPTION"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/Leakage" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LEAKAGE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/LeakPercentage" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LEAKPERCENTAGE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OConLeakageData/RevenueLoss" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="REVENUELOSS"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/CustAddKey" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CUSTADDKEY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/Board" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="BOARD"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/Zone" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="ZONE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/City" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CITY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/State" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="STATE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/Country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="COUNTRY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/Month" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="MONTH"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/Year" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="YEAR"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/NewCustomerCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NEWCUSTOMERCOUNT"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/RevIncrease" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="REVINCREASE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CURRENCY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/CreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CREATEDBY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.NewCustAdditions/CreatedTimestamp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CREATEDTIMESTAMP"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/LeakageKey" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LEAKAGEKEY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/Board" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="BOARD"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/Zone" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="ZONE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/City" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CITY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/State" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="STATE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/Country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="COUNTRY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/Month" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="MONTH"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/Year" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="YEAR"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/DetectedLeaksCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="DETECTEDLEAKSCOUNT"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/FixedLeaksCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FIXEDLEAKSCOUNT"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/SavedWater" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SAVEDWATER"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/SavedWaterUoM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SAVEDWATERUOM"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/NewCustomerCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NEWCUSTOMERCOUNT"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/RevIncrease" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="REVINCREASE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CURRENCY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/CreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CREATEDBY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.PhysicalLeakage/CreatedTimestamp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CREATEDTIMESTAMP"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.Flowvalues/C_TIMESTAMP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="C_TIMESTAMP"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.Flowvalues/C_FLOWMETERID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="C_FLOWMETERID"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.Flowvalues/C_FLOWVALUE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="C_FLOWVALUE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/FmID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FmID"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/Timestamp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="TIMESTAMP"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/FmDesc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMDESC"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/FmType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMTYPE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/FmZone" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMZONE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/FmCity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMCITY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/FmState" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMSTATE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/FmCountry" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMCOUNTRY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/FmLatitude" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMLATITUDE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/FmLongitude" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FMLONGITUDE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/SourceFmID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SOURCEFMID"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/TechnicianID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="TECHNICIANID"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CURRENCY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/WaterFlowUoM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="WATERFLOWUOM"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/Supply" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SUPPLY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/Consumption" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CONSUMPTION"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/Leakage" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LEAKAGE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/LeakPercentage" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LEAKPERCENTAGE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OLatestLeakageData/RevenueLoss" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="REVENUELOSS"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityNewConnections/City" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CITY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityNewConnections/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CURRENCY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityNewConnections/NewCustomerCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NEWCUSTOMERCOUNT"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityNewConnections/RevIncrease" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="REVINCREASE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OZoneNewConnections/Board" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="BOARD"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OZoneNewConnections/Zone" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="ZONE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OZoneNewConnections/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CURRENCY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OZoneNewConnections/NewCustomerCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NEWCUSTOMERCOUNT"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OZoneNewConnections/RevIncrease" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="REVINCREASE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityLeakages/City" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CITY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityLeakages/SavedWaterUoM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SAVEDWATERUOM"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityLeakages/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CURRENCY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityLeakages/DetectedLeaksCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="DETECTEDLEAKSCOUNT"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityLeakages/FixedLeaksCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="FIXEDLEAKSCOUNT"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityLeakages/SavedWater" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SAVEDWATER"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OCityLeakages/SavedRevenue" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SAVEDREVENUE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/Board" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="BOARD"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/Zone" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="ZONE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/City" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CITY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/State" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="STATE"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/Country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="COUNTRY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/Month" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="MONTH"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/Year" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="YEAR"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CURRENCY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/CustAddKey" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CUSTADDKEY"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/NewCustomerCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="NEWCUSTOMERCOUNT"/>
+            </Annotations>
+            <Annotations Target="AQUASERVICE.H2OAdminNewConnections/RevIncrease" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="REVINCREASE"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
